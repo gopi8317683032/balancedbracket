@@ -1,0 +1,42 @@
+def isopen(br):
+    if br in ["{","[","("]:
+        return True
+    return False
+    
+def isclose(br):
+    if br in ["}","]",")"]:
+        return True
+    return False
+    
+def iscorresponding(b1,b2):
+    if(b1=="{" and b2=="}"):
+        return True
+    if(b1=="[" and b2=="]"):
+        return True
+    if(b1=="(" and b2==")"):
+        return True
+    return False
+    
+
+
+
+ex=input()
+s=[]
+n=-1
+for i in range(len(ex)):
+    b=ex[i]
+    if(isopen(b)):
+        s.append(b)
+    elif(isclose(b)and len(s)>0):
+        if(iscorresponding(s[-1],b)):
+            del s[-1]
+        else:
+            print(n)
+            exit(0)
+    elif(isclose(b) and len(s)==0):
+        print(n)
+        exit(0)
+    
+    if(len(s)==0):
+        print(1)
+        
